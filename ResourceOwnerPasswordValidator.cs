@@ -8,9 +8,6 @@ using System.Threading.Tasks;
 
 namespace testIdentity
 {
-    public interface IResourceOwnerPasswordValidator { 
-
-    }
     public class ResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
     {
         public Task ValidateAsync(ResourceOwnerPasswordValidationContext context)

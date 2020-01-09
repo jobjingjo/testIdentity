@@ -24,43 +24,46 @@ namespace testIdentity
 
         public static IEnumerable<Client> GetClients()
         {
-            yield return new Client
-            {
-                ClientName = "Client Credential Flow",
-                ClientId = "client_credential_flow",
-                AllowedGrantTypes = GrantTypes.ClientCredentials,
-                ClientSecrets =
-  {
-    new Secret("client_credential_flow_secret".Sha256())
-  },
-                AllowedScopes =
-  {
-    "all"
-  },
-                AllowOfflineAccess = false,
-                AccessTokenLifetime = 60
-            };
-
-            yield return new Client
-            {
-                ClientName = "Resource Owner Flow",
-                ClientId = "resource_owner_flow",
-                AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                ClientSecrets =
-  {
-    new Secret("resource_owner_flow_secret".Sha256())
-  },
-                AllowedScopes =
-  {
-    IdentityServerConstants.StandardScopes.OpenId,
-    IdentityServerConstants.StandardScopes.OfflineAccess
-  },
-                AllowOfflineAccess = true,
-                RefreshTokenUsage = TokenUsage.ReUse,
-                AccessTokenLifetime = 60,
-                RefreshTokenExpiration = TokenExpiration.Absolute,
-                AbsoluteRefreshTokenLifetime = 300
-            };
+            return new List<Client>
+      {
+        new Client
+        {
+          ClientName = "Resource Owner Flow",
+          ClientId = "resource_owner_flow",
+          AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
+          ClientSecrets =
+          {
+            new Secret("resource_owner_flow_secret".Sha256())
+          },
+          AllowedScopes =
+          {
+            IdentityServerConstants.StandardScopes.OpenId,
+            IdentityServerConstants.StandardScopes.OfflineAccess
+          },
+          AllowOfflineAccess = true,
+          RefreshTokenUsage = TokenUsage.OneTimeOnly,
+          AccessTokenLifetime = 60,
+          RefreshTokenExpiration = TokenExpiration.Absolute,
+          AbsoluteRefreshTokenLifetime = 300
+        },
+        new Client
+        {
+          ClientName = "Client Credential Flow",
+          ClientId = "client_credential_flow",
+          AllowedGrantTypes = GrantTypes.ClientCredentials,
+          ClientSecrets =
+          {
+            new Secret("client_credential_flow_secret".Sha256())
+          },
+          AllowedScopes =
+          {
+            "all",
+            IdentityServerConstants.StandardScopes.OfflineAccess
+          },
+          AllowOfflineAccess = true,
+          AccessTokenLifetime = 60
+        }
+      };
         }
     }
 }

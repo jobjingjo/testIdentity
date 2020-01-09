@@ -12,7 +12,7 @@ https://www.scottbrady91.com/Identity-Server/Getting-Started-with-IdentityServer
 
 
 
-
+dotnet watch run
 
 
 https://localhost:5001/token 
@@ -31,3 +31,15 @@ grant_type=password
 scope=openid+offline_access
 client_id=resource_owner_flow
 client_secret=resource_owner_flow_secret
+
+Refresh Token
+To get a refresh token, it needs the refresh token that comes with the resource owner token response. Do this to get a new access token:
+https://localhost:5001/token 
+POST
+grant_type=refresh_token
+client_id=resource_owner_flow
+client_secret=resource_owner_flow_secret
+refresh_token=GVP13…Xsy1Vu4M
+
+https://localhost:5001/.well-known/openid-configuration
+GET
