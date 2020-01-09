@@ -23,4 +23,11 @@ scope=all
 client_id=client_credential_flow
 client_secret=client_credential_flow_secret
 
-
+https://localhost:5001/token 
+POST
+username=username
+password=password
+grant_type=password
+scope=openid+offline_access
+client_id=resource_owner_flow
+client_secret=resource_owner_flow_secret

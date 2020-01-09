@@ -27,6 +27,8 @@ namespace testIdentity
                       .AddDeveloperSigningCredential(false);
 
             services.AddTransient<ITokenProvider, TokenProvider>();
+            services.AddTransient<IResourceOwnerPasswordValidator, ResourceOwnerPasswordValidator>();
+
 
             services.AddControllers().AddNewtonsoftJson();
         }
