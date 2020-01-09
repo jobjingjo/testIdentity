@@ -28,7 +28,7 @@ POST
 username=username
 password=password
 grant_type=password
-scope=openid+offline_access
+scope=openid offline_access
 client_id=resource_owner_flow
 client_secret=resource_owner_flow_secret
 
