@@ -43,3 +43,7 @@ refresh_token=GVP13…Xsy1Vu4M
 
 https://localhost:5001/.well-known/openid-configuration
 GET
+
+http://localhost:5000/weatherforecast
+GET
+Use token from password
